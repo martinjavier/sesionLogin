@@ -28,6 +28,8 @@ app.use(
   })
 );
 
+// http://localhost:3000/contador
+
 app.get("/contador", (req, res) => {
   if (req.session.contador) {
     req.session.contador++;
@@ -68,9 +70,13 @@ app.get("/login", (req, res) => {
   }
 });
 
+// http://localhost:3000/restringida
+
 app.get("/restringida", auth, (req, res) => {
   res.send("Información restringida");
 });
+
+// http://localhost:3000/logout
 
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
